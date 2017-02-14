@@ -18,6 +18,6 @@ public class MessageRouter extends RouteBuilder {
     from(SEND_MESSAGE_ROUTE).routeId("SEND_MESSAGE_ROUTE")
       .bean(messageProcessor)
 //        .transform(body().toString())
-        .to("file:output");
+        .to("file:output/?fileName=messages_report.txt&fileExist=append");
   }
 }
