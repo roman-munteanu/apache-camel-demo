@@ -2,3 +2,10 @@ logging:
   level:
     org.springframework.web: ERROR
     com.munteanu: DEBUG
+
+spring.data.mongodb.uri: mongodb://localhost:27017/camel
+
+mongo:
+  host: localhost
+  port: 27017
+  database: camel

@@ -1,1 +1,0 @@
-DemoMessage{text='Sample message'}DemoMessage{text='Sample message 2'}

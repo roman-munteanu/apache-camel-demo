@@ -2,19 +2,16 @@ package com.munteanu.processors;
 
 import com.munteanu.models.DemoMessage;
 import org.apache.camel.Exchange;
-import org.apache.camel.Handler;
+import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
-@Component
-public class MessageProcessor {
+public class DemoMessageToStringProcessor implements Processor {
 
-  private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+  private static final Logger LOGGER = LoggerFactory.getLogger(DemoMessageToStringProcessor.class);
 
-  // @Body, @Header
-  @Handler
-  public void process(Exchange exchange) {
+  @Override
+  public void process(Exchange exchange) throws Exception {
     DemoMessage demoMessage = (DemoMessage) exchange.getIn().getBody();
     LOGGER.debug(demoMessage.toString());
     exchange.getIn().setBody(demoMessage.toString());

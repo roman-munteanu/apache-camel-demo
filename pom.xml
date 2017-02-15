@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<apache.camel-version>2.18.1</apache.camel-version>
+		<camel.mongodb-version>2.18.1</camel.mongodb-version>
 	</properties>
 
 	<dependencies>
@@ -36,6 +37,18 @@
 			<artifactId>camel-spring-boot-starter</artifactId>
 			<version>${apache.camel-version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-mongodb</artifactId>
+			<version>${camel.mongodb-version}</version>
+		</dependency>
+
 
 		<!-- Testing -->
 		<dependency>
