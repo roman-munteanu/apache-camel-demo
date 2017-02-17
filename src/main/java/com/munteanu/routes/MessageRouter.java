@@ -7,6 +7,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static com.munteanu.enums.Channel.AMQP;
 import static com.munteanu.enums.Channel.CSV;
 import static com.munteanu.enums.Channel.DATABASE;
 import static com.munteanu.enums.Channel.TXT;
@@ -33,7 +34,10 @@ public class MessageRouter extends RouteBuilder {
           .bean(demoMessageToCsvProcessor)
           .to("file:output/?fileName=demo_messages.csv&fileExist=append")
         .when(header(DEMO_MESSAGE_CHANNEL).isEqualTo(DATABASE))
-          .to("mongodb:mongoBean?database=camel&collection=messages&operation=insert");
+          .to("mongodb:mongoBean?database=camel&collection=messages&operation=insert")
+        .when(header(DEMO_MESSAGE_CHANNEL).isEqualTo(AMQP))
+          .process(new DemoMessageToStringProcessor())
+          .to("rabbitmq://localhost:5672/munteanu.demo.direct.exchange?routingKey=munteanu.demo.message.send.routing.key");
 //        .otherwise()
 //          .to();
   }

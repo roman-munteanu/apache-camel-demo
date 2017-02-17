@@ -9,3 +9,13 @@ mongo:
   host: localhost
   port: 27017
   database: camel
+
+
+rabbitmq:
+  addresses: localhost:5672
+  username: guest
+  password: guest
+  virtualHost: /
+  useSsl: false
+  maxConcurrentConsumers: 5
+  messageTtl: 10000
