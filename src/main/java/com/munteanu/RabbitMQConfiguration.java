@@ -1,5 +1,6 @@
 package com.munteanu;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -48,7 +49,7 @@ public class RabbitMQConfiguration {
   @Bean
   public Jackson2JsonMessageConverter jsonMessageConverter() {
     Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter();
-//    messageConverter.setJsonObjectMapper(new ApiObjectMapper());
+    messageConverter.setJsonObjectMapper(new ObjectMapper());
     return messageConverter;
   }
 
